@@ -71,11 +71,11 @@ namespace zenDzeeMods_Heritage
         {
             if (!hero.IsTemplate && !hero.IsMinorFactionHero && hero.IsNoble)
             {
-                if (hero.IsAlive && (hero.Age - hero.DynamicBodyProperties.Age) > 1f)
+                if (hero.IsAlive && (hero.Age - hero.BodyProperties.DynamicProperties.Age) > 1f)
                 {
-                    DynamicBodyProperties dp = hero.DynamicBodyProperties;
+                    DynamicBodyProperties dp = hero.BodyProperties.DynamicProperties;
                     dp.Age = hero.Age;
-                    hero.DynamicBodyProperties = dp;
+//                    hero.DynamicBodyProperties = dp;
                 }
 
                 if ((int)hero.BirthDay.ElapsedDaysUntilNow % CampaignTime.DaysInYear == 0)
