@@ -46,6 +46,7 @@ namespace zenDzeeMods_Heritage
                 "{=5hhxQBTj}I will be honored.[rb:positive]",
                 null, ConsequenceChangeClanLeader);
 
+            /*
             campaignStarter.AddPlayerLine("zendzee_charcter_window_open", "companion_role", "zendzee_charcter_window_active",
                 "{=zee9065692B}Let me check your progress.",
                 ConditionOpenCharacterWindow, ConsequenceCharacterWindowOpen, 110);
@@ -58,6 +59,7 @@ namespace zenDzeeMods_Heritage
             campaignStarter.AddPlayerLine("zendzee_charcter_window_reply2", "zendzee_charcter_window_close", "companion_okay",
                 "{=zee5F9A2B79}Yes.",
                 null, ConsequenceCharacterWindowClose);
+            */
         }
 
         private static bool ConditionOpenCharacterWindow()
@@ -232,8 +234,10 @@ namespace zenDzeeMods_Heritage
 
             newLeader.Clan.Influence = Math.Max(0, newLeader.Clan.Influence - 100);
 
+            /* Disabled for Light Version
             HeroFixHelper.FixHeroStats(newLeader);
             HeroFixHelper.FixEquipment(newLeader);
+            */
 
             newLeader = null;
             leader = null;

@@ -1,7 +1,82 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!-- Main Project Properties -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MNB2DIR>E:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</MNB2DIR>
+    <Version>1.5.5.0</Version>
+    <TargetFramework>net472</TargetFramework>
+    <Platforms>x64</Platforms>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ModuleName>$(MSBuildProjectName)</ModuleName>
+	<!-- Set as Machine Env Variable, or define in line below -->
+	<!-- <BL_GAME_DIR>Define Path Here</BL_GAME_DIR> -->
+    <GameFolder>$(BL_GAME_DIR)</GameFolder>
+	<!-- <GameFolder>$(BL_GAME_DIR_GOG)</GameFolder> -->
+    <Authors>Jiros</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NoWarn>1701;1702</NoWarn>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.*.dll">
+      <HintPath>%(Identity)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameFolder)\Modules\Native\bin\Win64_Shipping_Client\*.dll">
+      <HintPath>%(Identity)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameFolder)\Modules\SandBox\bin\Win64_Shipping_Client\*.dll">
+      <HintPath>%(Identity)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameFolder)\Modules\SandBoxCore\bin\Win64_Shipping_Client\*.dll">
+      <HintPath>%(Identity)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameFolder)\Modules\StoryMode\bin\Win64_Shipping_Client\*.dll">
+      <HintPath>%(Identity)</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="HeroFixBehavior.cs" />
+    <Compile Remove="HeroFixHelper.cs" />
+    <Compile Remove="MarriageFixBehavior.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bannerlord.BuildResources" Version="1.0.0.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony" Version="2.0.4" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.ButterLib" Version="1.0.18" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.UIExtenderEx" Version="1.0.5" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.MCM" Version="4.1.2" IncludeAssets="compile" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_Module\" />
+  </ItemGroup>
+
+<!--
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MNB2DIR>D:\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord</MNB2DIR>
     <MOD_ID>zenDzeeMods_Heritage</MOD_ID>
     <MOD_OUTDIR>$(MNB2DIR)\Modules</MOD_OUTDIR>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -17,7 +92,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <!-- Debug Configuration Properties -->
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -27,7 +102,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <!-- Release Configuration Properties -->
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
@@ -36,7 +111,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <!-- Debugging Properties -->
+
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(MNB2DIR)\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.Launcher.exe</StartProgram>
@@ -44,13 +119,13 @@
     </StartArguments>
     <StartWorkingDirectory>$(MNB2DIR)\bin\Win64_Shipping_Client</StartWorkingDirectory>
   </PropertyGroup>
-  <!-- Bannerlord Native Assemblies -->
+
   <ItemGroup>
     <Reference Include="$(MNB2DIR)\bin\Win64_Shipping_Client\TaleWorlds*.dll">
       <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
     </Reference>
-    <!-- Bannerlord Module Assemblies  -->
+
     <Reference Include="$(MNB2DIR)\Modules\Native\bin\Win64_Shipping_Client\TaleWorlds*.dll">
       <HintPath>%(Identity)</HintPath>
       <Private>False</Private>
@@ -69,7 +144,7 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
-  <!-- Files & Classes -->
+
   <ItemGroup>
     <Compile Include="HeroFixBehavior.cs" />
     <Compile Include="HeroFixHelper.cs" />
@@ -82,12 +157,13 @@
     <Content Include="SubModule.xml" />
     <Content Include="ModuleData\Languages\*.xml" />
   </ItemGroup>
-  <!-- Post-Build -->
-  <PropertyGroup>
+
+	<PropertyGroup>
     <PostBuildEvent>
       xcopy /d /y "$(MSBuildProjectDirectory)\SubModule.xml" "..\..\"
       xcopy /d /y /s "$(MSBuildProjectDirectory)\ModuleData" "..\..\ModuleData\"
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  -->
 </Project>

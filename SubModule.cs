@@ -13,8 +13,10 @@ namespace zenDzeeMods_Heritage
                 CampaignGameStarter campaignStarter = (CampaignGameStarter)gameStarter;
 
                 campaignStarter.AddBehavior(new HeritageBehavior());
+                /* Removed for Light
                 campaignStarter.AddBehavior(new HeroFixBehavior());
                 campaignStarter.AddBehavior(new MarriageFixBehavior());
+                */
             }
         }
     }

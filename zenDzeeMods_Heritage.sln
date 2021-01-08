@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zenDzeeMods_Heritage", "zenDzeeMods_Heritage.csproj", "{336843B3-EC23-44A7-89AC-D9A55E3A9C07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zenDzeeMods_Heritage", "zenDzeeMods_Heritage.csproj", "{4DFBE652-AD9F-4199-8B2A-B1542DB92B2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{336843B3-EC23-44A7-89AC-D9A55E3A9C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{336843B3-EC23-44A7-89AC-D9A55E3A9C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{336843B3-EC23-44A7-89AC-D9A55E3A9C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{336843B3-EC23-44A7-89AC-D9A55E3A9C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DFBE652-AD9F-4199-8B2A-B1542DB92B2A}.Debug|x64.ActiveCfg = Debug|x64
+		{4DFBE652-AD9F-4199-8B2A-B1542DB92B2A}.Debug|x64.Build.0 = Debug|x64
+		{4DFBE652-AD9F-4199-8B2A-B1542DB92B2A}.Release|x64.ActiveCfg = Release|x64
+		{4DFBE652-AD9F-4199-8B2A-B1542DB92B2A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
